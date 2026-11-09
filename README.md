@@ -36,21 +36,62 @@
 
 <h2 align="center"><sub>INSTALL</sub><br>安装</h2>
 
+### 方式 A · 在 DSH 界面里装（推荐）
+
+1. 打开 DSH，左侧进 **「插件」**；
+2. 安装源选 **「Git 仓库」**，输入框里粘贴这一行（**就是这串，别改**）：
+
+```
+github:zhangzhanglaila/dsh-mattpocock-skills
+```
+
+3. 选装进的 profile（桌面应用是 `desktop`），点安装，等它跑完。
+
+<p align="center"><img src="docs/install.png" width="760" alt="在 DSH 插件页输入 github:zhangzhanglaila/dsh-mattpocock-skills 安装"></p>
+
+<p align="center"><sub>安装对话框：来源标记为「Git 仓库」，输入内容就是 <code>github:zhangzhanglaila/dsh-mattpocock-skills</code></sub></p>
+
+### 方式 B · 命令行
+
 ```bash
 # ① 安装 DSH CLI（已装跳过）
 npm install -g @deepseek-ai/dsh
 
 # ② 装进你实际启动应用所用的 profile —— 装错 profile 等于没装
-dsh plugin --profile desktop add D:\Code\dsh-mattpocock-skills
+dsh plugin --profile desktop add github:zhangzhanglaila/dsh-mattpocock-skills
 
 # ③ 确认 bundle 层已组合（应出现 - id: dsh-mattpocock-skills）
 dsh --profile desktop --dump-config
 ```
 
-> profile 名按你的入口填：桌面应用是 `desktop`，`dsh web` 是 `web`。
-> 卸载：`dsh plugin --profile desktop remove dsh-mattpocock-skills`。
+### 方式 C · 本地开发（链接方式）
+
+```bash
+dsh plugin --profile desktop add D:\Code\dsh-mattpocock-skills
+```
+
+> A / B 装的是 Git 副本，**改本地文件不会生效**；C 是链接，改完即时生效。
+> 两种方式**不能同时装**——切换前先 `dsh plugin --profile desktop remove dsh-mattpocock-skills`，
+> 否则会撞上 `EPERM ... rename ..._tmp_ -> dsh-mattpocock-skills`（Windows 不允许覆盖已有的目录链接）。
+
+卸载：`dsh plugin --profile desktop remove dsh-mattpocock-skills`。
+profile 名按你的入口填：桌面应用是 `desktop`，`dsh web` 是 `web`。
 
 安装完成后，技能进入 `ctx.skills` 的 **host 层**，因此每一个 agent preset 的作用域链都会合并它们。
+
+**装之前确认这四件事**
+
+| 条件 | 为什么 | 不满足时的报错 |
+| --- | --- | --- |
+| 机器装了 `git` | pnpm 处理 `github:` 依赖要先 `git ls-remote` | `ERR_PNPM_GIT_RESOLVE_FAILED` |
+| 能访问 `github.com` | 代码要从 GitHub 拉取 | `ETIMEDOUT` / `504` |
+| DSH `>= 0.1.0-rc.6` | `package.json` 的 `engines.dsh` | 安装被拦下 |
+| profile 选对 | 装错 profile 等于没装 | 重启也看不到技能 |
+
+**装完怎么确认**
+
+- 插件页里显示已启用；`dsh --profile <name> --dump-config` 输出 `- id: dsh-mattpocock-skills`；
+- 新会话的技能目录出现 11 个模型可调技能，输入框敲 `/` 能看到全部 27 个。
 
 **实测环境**
 

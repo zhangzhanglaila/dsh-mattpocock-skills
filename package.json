@@ -12,6 +12,7 @@
   "files": [
     "lib",
     "skills",
+    "docs",
     "catalog.json",
     "dsh.plugin.json",
     "cordis.patch.yml",
@@ -38,6 +39,14 @@
     "code-review"
   ],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhangzhanglaila/dsh-mattpocock-skills.git"
+  },
+  "homepage": "https://github.com/zhangzhanglaila/dsh-mattpocock-skills#readme",
+  "bugs": {
+    "url": "https://github.com/zhangzhanglaila/dsh-mattpocock-skills/issues"
+  },
   "dsh": {
     "bundle": {
       "patch": "./cordis.patch.yml"
