@@ -1,0 +1,4 @@
+# Skill files must stay byte-stable across checkouts: git stores LF, and the
+# working tree is checked out as LF, so the SHA-256 values in catalog.json mean
+# the same thing on every machine.
+* text=auto eol=lf

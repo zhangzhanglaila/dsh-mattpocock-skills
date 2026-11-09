@@ -1,0 +1,41 @@
+{
+  "id": "dsh-mattpocock-skills",
+  "version": "0.1.0",
+  "main": "./lib/index.js",
+  "description": "Matt Pocock's skills for the DeepSeek Harness, shipped verbatim from https://github.com/mattpocock/skills",
+  "engines": {
+    "dsh": ">=0.1.0-rc.6"
+  },
+  "contributes": {
+    "tools": [],
+    "skills": [
+      "ask-matt",
+      "diagnosing-bugs",
+      "grill-with-docs",
+      "triage",
+      "improve-codebase-architecture",
+      "setup-matt-pocock-skills",
+      "tdd",
+      "to-spec",
+      "to-tickets",
+      "wayfinder",
+      "implement",
+      "implement-spec",
+      "prototype",
+      "research",
+      "domain-modeling",
+      "codebase-design",
+      "code-review",
+      "pr",
+      "retro",
+      "wizard",
+      "grill-me",
+      "grilling",
+      "handoff",
+      "teach",
+      "to-questionnaire",
+      "wait-what",
+      "writing-for-agents"
+    ]
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "name": "dsh-mattpocock-skills",
+  "version": "0.1.0",
+  "description": "Matt Pocock's skills for the DeepSeek Harness, shipped verbatim from https://github.com/mattpocock/skills",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./catalog.json": "./catalog.json",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "skills",
+    "catalog.json",
+    "dsh.plugin.json",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "dsh": ">=0.1.0-rc.6"
+  },
+  "scripts": {
+    "sync": "node scripts/sync-upstream.mjs",
+    "verify": "node scripts/verify.mjs",
+    "prepublishOnly": "node scripts/verify.mjs"
+  },
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "plugin",
+    "skills",
+    "mattpocock",
+    "aihero",
+    "grilling",
+    "tdd",
+    "code-review"
+  ],
+  "license": "MIT",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}
